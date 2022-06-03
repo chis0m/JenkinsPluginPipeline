@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  jenkins:
+    build:
+      context: .
+    image: cl0ud/jenkinswithplugin:latest
+    environment:
+      JAVA_OPTS: -Djenkins.install.runSetupWizard=false
+      JENKINS_OPTS: --argumentsRealm.roles.user=admin --argumentsRealm.passwd.admin=admin --argumentsRealm.roles.admin=admin
+    ports:
+      - "8282:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
